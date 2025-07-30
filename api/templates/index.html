@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <title> The curl theorem </title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="../static/node_modules/mathquill/build/mathquill.min.js"></script>
+        <script src="../static/node_modules/evaluatex/dist/evaluatex.min.js"></script>
+        <script src="../static/math_.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.2/math.js"></script>
+        <script src="../static/shaders.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <link rel="stylesheet" href="../static/style.css" />
+        <link rel="stylesheet" href="../static/node_modules/mathquill/build/mathquill.css" />
+    </head>
+
+    <body>
+        <h1> Kelvin–Stokes theorem! </h1>
+
+        <div class="description">
+            <p1>
+            The Kelvin–Stokes theorem states that the total curl around a closed surface is equal to the line integral of the vector field around the boundary of the surface. 
+            In other words, it relates the circulation of a vector field around a closed curve to the flux of its curl through the surface bounded by that curve.
+            </p1>
+        </div>
+
+        <divc class="equations"> 
+            <p>
+                observe below:
+            </p>
+
+            <p>
+            \(\displaystyle \iint _{\Sigma }(\nabla \times \mathbf {F} )\cdot \mathrm {d} \mathbf {\Sigma } =\oint _{\partial \Sigma }\mathbf {F} \cdot \mathrm {d} \mathbf {\Gamma }\)
+            </p>
+
+            <p id="equation">
+            \(\displaystyle \iint _{\Sigma }(\nabla \times \mathbf {F} )\cdot \mathrm {d} \mathbf {\Sigma } =0\)
+            </p>
+
+            <p>
+            Note that there may be small differences in LHS and RHS due to numerical inaccuracies. <br>
+            We approximate the Stokes-theorem computationally using a framework:
+            $$ 
+            \iint_S (\nabla \times \vec{F}) \cdot d\vec{S}
+            \approx \sum_{u,v} \left[ (\nabla \times \vec{F})(\vec{r}(u,v)) \cdot 
+            \left( \frac{\partial \vec{r}}{\partial u} \times \frac{\partial \vec{r}}{\partial v} \right) \right] \Delta u\, \Delta v
+            $$
+
+            and:
+
+            $$
+            \oint_{\partial S} \vec{F} \cdot d\vec{\Gamma}
+            \approx \sum_{\partial S} \left[ \vec{F}(\vec{r}(u,v)) \cdot 
+            \left( \frac{\partial \vec{r}}{\partial u} \Delta v + \frac{\partial \vec{r}}{\partial v} \Delta u \right) \right]
+            $$
+            </p>
+
+        </div>
+        <canvas id="plotCanvas" width="800" height="600"></canvas>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+        </canvas>
+        <script src="../static/opengl.js"></script>
+        <div class="zoomSlider" id="zoom">
+                <label for="zoomRange">Zoom</label>
+                <input type="range" min="0" max="50" value="0" class="slider" id="zoomRange">
+            </div>
+        <div class="inputs" id="inputs"> 
+            <div class="_curve"> 
+                <label for="_curve">Curve parameters:</label>
+                <p>
+                    \(r_x(u, v)\) = 
+                    <span type="text" id="par_x"></span>
+                </p>
+                <p>
+                    \(r_y(u, v)\) = 
+                    <span type="text" id="par_y"></span>
+                </p>
+                <p>
+                    \(r_z(u, v)\) = 
+                    <span type="text" id="par_z"></span>
+                </p>
+            </div>
+            <div class="_field">
+                <label for="_field">Vector field parameters:</label>
+                <p>
+                    \(F_x(x, y, z)\) = 
+                    <span type="text" id="vec_x"></span>
+                </p>
+                <p>
+                    \(F_y(x, y, z)\) = 
+                    <span type="text" id="vec_y"></span>
+                </p>
+                <p>
+                    \(F_z(x, y, z)\) = 
+                    <span type="text" id="vec_z"></span>
+                </p>
+            </div>
+            <script>
+                
+            </script>
+        </div>
+        <script src="../static/inputs.js"></script>
+        <script src="../static/main.js"></script>
+
+    </body>
+</html>
