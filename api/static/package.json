@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "evaluatex": "^2.2.0",
-    "mathjs": "^14.4.0",
-    "mathquill": "^0.10.1-a"
-  }
-}
